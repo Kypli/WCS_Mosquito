@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block css %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
+          integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
+          crossorigin=""/>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="jumbotron category-title">
+        <h1>advanced search</h1>
+    </div>
+
+    {#Advance Search#}
+    <div class="row">
+        <div class="col-sm-offset-2 col-sm-8 text-center">
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <div class="row adv-input marginSubmit">
+                    <input class="adv-submit btn" type="submit" value="Go !!!"/>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+    {#Thumbnails#}
+    {% if specimens is iterable %}
+        {% include 'specimen/thumbnails.html.twig' %}
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+    {{ parent() }}
+    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
+            integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
+            crossorigin="">
+    </script>
+    <script src="{{ asset('build/apimap.js') }}"></script>
+
+{% endblock %}

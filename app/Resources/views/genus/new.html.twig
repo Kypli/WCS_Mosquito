@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="jumbotron category-title">
+            <h1>Genus Creation</h1>
+        </div>
+        <div class="row">
+            <div class="col-sm-offset-2 col-sm-8 text-center">
+                <div>
+                    {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    <div class="row">
+                        <div class="pull-left">
+                            <a href="{{ path('genus_index') }}">
+                                <button type="button" class="btn backindex"><span class="glyphicon glyphicon-arrow-left"></span> Back to the list</button>
+                            </a>
+                        </div>
+                        <div class="pull-right">
+                            <button type="submit" class="btn pull-right btncreate"><span class="glyphicon glyphicon-plus"></span> Create</button>
+                        </div>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

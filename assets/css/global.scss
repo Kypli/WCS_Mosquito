@@ -1,0 +1,870 @@
+/********************/
+/* **** IMPORT **** */
+// On import la police Roboto
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+// On import bootstrap
+@import '~bootstrap-sass/assets/stylesheets/bootstrap';
+// On surcharge la variable de bootstrap pour les icônes:
+$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
+// On import le fichier fontawesome de style:
+@import '~font-awesome/scss/font-awesome.scss';
+// On surcharge la variable de fontawesome pour la police:
+$fa-font-path: "~font-awesome/fonts";
+
+
+
+/*****************************/
+/***** PATTERN BODY START ****/
+
+.background-body {
+  background-image: url("../../web/assets/images/patternbody.png");
+}
+
+/* **** PATTERN BODY END *****/
+/*****************************/
+
+/***************************/
+/* **** NAVBAR START **** */
+
+.navbar {
+  position: relative;
+}
+
+.navbarBackground {
+  background-color: #37474F;
+  border-color: #37474F;
+}
+
+.navbar-btn {
+  width: 250px;
+  color: #37474F;
+  font-size: 1em;
+  font-family: 'Roboto', sans-serif;
+}
+
+a.navbar-brand {
+  font-size: 1.4em;
+  margin-top: 25px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.navbar-nav {
+  margin: auto;
+}
+
+.flex {
+  display: flex;
+  div {
+    display: flex;
+  }
+}
+.marginResult {
+  margin-bottom: 15px;
+}
+
+.searchBar {
+  width: 100%;
+  font-size: 1em;
+  font-family: Roboto, sans-serif;
+  @media (min-width: 768px) {
+    margin-top: 23px;
+  }
+  @media screen and (min-width: 390px) and (max-width: 767px) {
+    width: 225px;
+    margin-top: 23px;
+  }
+  @media screen and (min-width: 200px) and (max-width: 389px) {
+    width: 110px;
+  }
+}
+
+.SearchSubmit {
+  margin-top: 23px;
+  background-color: white;
+  @media (max-width: 480px) {
+    margin-left: 100px;
+    margin-top: -35px;
+  }
+}
+
+.marginSubmit {
+  margin-top: 1.5em;
+}
+
+.SearchSubmit:hover {
+  background-color: #e6e6e6;
+}
+
+.AdvancedSearch {
+  margin-top: 23px;
+  margin-bottom: 20px;
+}
+
+.advanced-btn {
+  top: 0;
+}
+
+.adv-submit {
+  font-family: Roboto, SansSerif;
+  color: white;
+  font-size: 1em;
+  background-color: #617D8A;
+  border-radius: 4px;
+  border-color: white;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-bottom: 20px;
+}
+
+.adv-submit:hover {
+  background-color: #EBEFF2;
+  color: #617D8A;
+  border-color: #617D8A;
+}
+
+.adv-input {
+  text-align: center;
+  font-size: 1em;
+  input {
+    width: 100%;
+  }
+}
+
+.admin-drop {
+  left:15px;
+}
+
+.admin-btn {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.marginSearch {
+  margin-top: 23px;
+}
+
+.burger-btn {
+  z-index:2;
+}
+
+.btnSearch:hover {
+  background-color: #e6e6e6;
+}
+
+
+/****** NAVBAR END ********/
+/**************************/
+
+/***********************/
+/* **** HOME START**** */
+
+/* No Result */
+
+img.mosquidLogo {
+  margin-top: 5vw;
+  width: 20vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.launchResearch {
+  text-align: center;
+  font-family: Roboto, sans-serif;
+  font-size: 1.2em;
+}
+
+.launch {
+  color: #ccc;
+  font-size: 3em;
+  margin: 50px;
+  @media (min-width: 200px) and (max-width: 530px){
+    font-size: 1.2em;
+  }
+}
+
+/* Result */
+
+.titleResult {
+  font-size: 25px;
+  font-weight: bold;
+  color: #263238;
+  background-color: #EBEFF2;
+  text-align: center;
+}
+
+.matchFound {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  font-size: 1.5em;
+  color: #ccc;
+}
+
+.matchFoundNumber {
+  font-size: 1em;
+  font-weight: bold;
+  color: #ccc;
+}
+
+table.tableResult {
+  border: none;
+}
+
+.tableResult {
+  width: 100%;
+  font-size: 1em;
+  font-family: Roboto, sans-serif;
+  border-radius: 4px;
+  @media screen and (min-width: 200px) and (max-width: 480px) {
+    font-size: 0.8em;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  th, tr, td {
+    min-width: 10px;
+    text-align: center;
+    padding: 15px;
+  }
+  th {
+    background-color: #617D8A;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+  th.fam, th.sub, th.gen {
+    @media screen and (min-width: 200px) and (max-width: 480px) {
+      padding-bottom: 0;
+    }
+  }
+  th a {
+    margin-left: 5px;
+  }
+  tr:nth-child(odd) {
+    background-color: #EBEFF2;
+  }
+  tbody {
+    background-color: white;
+  }
+}
+
+.orderBy img {
+  width: 20px;
+  height: 10px;
+  margin-left: 5px;
+}
+
+.chevron.chevronActive {
+  color: #37474F;
+}
+
+.chevron {
+  color: white;
+}
+
+.glyphicon {
+  @media screen and (min-width: 200px) and (max-width: 530px) {
+    display: none;
+  }
+}
+
+.dropdown-result {
+  top: 40px;
+}
+.navigation .pagination {
+  .active span {
+    background-color: #546E7A;
+    border-color: #546E7A;
+  }
+  a {
+    color: black;
+  }
+}
+
+.dropdown-result > li:hover, .dropdown-specimen-result > li:hover  {
+  background-color: #37474F;
+  color: white;
+  cursor: pointer;
+}
+
+.dropdown-result > li {
+  min-width: 260px;
+  padding-left: 15px;
+}
+
+.category_ajax_name {
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor:not-allowed;
+  text-decoration: underline;
+}
+.category_item {
+  margin-left: 1em;
+}
+
+.responsiveSearch {
+  @media (max-width : 480px) {
+  margin-top: -40px;
+  min-width: 175px;
+  }
+
+}
+
+/******** HOME END******/
+/***********************/
+
+/**************************/
+/****** SPECIMEN START ******/
+
+/* Specimen Index */
+
+.thumbnail-color {
+  background-color: #EBEFF2;
+  padding: 20px 10px 0px 10px;
+  a {
+    color: #263238;
+  }
+  a.btn-primary {
+    color: white;
+    background-color: #617D8A;
+    border-color: #617D8A;
+  }
+  a.backindex {
+    color: white;
+  }
+  a.backindex:hover {
+    color: #617D8A;
+  }
+ }
+
+.img-thumbnail {
+  max-height: 200px;
+  max-width: 350px;
+}
+
+.thumbnail > img {
+  display: block;
+  max-width: 100%;
+  height: 150px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+div.thumbnail.thumbnail-color>div.caption {
+  padding-left: 2px;
+  padding-right: 2px;
+  text-align: left;
+  h3 {
+    font-size: 1.4em;
+    text-align: center;
+    a {
+      padding-right: 3px;
+      margin-left: -5px;
+      text-align: center;
+    }
+  }
+  p {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+/* Map specimen */
+#mapid2 {
+  height: 550px;
+  width: 100%;
+  margin: auto;
+}
+
+div.leaflet-popup-content-wrapper, div.leaflet-popup-tip {
+  background: #EBEFF2;
+  color: black;
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  padding: 0.01em;
+  border-radius: 6px;
+}
+
+.button-delete {
+  display: inline;
+}
+
+.buttonspecimenindex {
+  text-align: center;
+}
+
+/* Specimen Add */
+
+.checkbox {
+  label {
+    font-weight: bold;
+  }
+  label.label-for-check.backgroundTrue {
+    background-color: #5CB85C;
+  }
+  label.label-for-check {
+    display: block;
+    position: relative;
+    border-radius: 4px;
+    color: #364851;
+    background-color: #EBEFF2;
+    white-space: nowrap;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color .2s, box-shadow .2s;
+  }
+}
+
+.checkbox {
+  label.label-for-check::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    right: 10px;
+    width: 32px;
+    border: 3px solid #fff;
+    border-radius: 100px;
+    -webkit-transition: background-color .2s;
+    transition: background-color .2s;
+  }
+}
+
+.checkbox {
+  label.label-for-check.backgroundTrue {
+    background-color: #99cc99;
+    color: white;
+  }
+  label.label-for-check.backgroundTrue::before {
+    background-color: #fff;
+  }
+}
+
+label.label-for-check {
+  input.check-with-label {
+    position: absolute;
+    left: -9999px;
+  }
+}
+
+.label-form {
+  label {
+    color: white;
+    background-color: #777777;
+    border-radius: 4px;
+    padding: 7px;
+  }
+}
+
+.form-horizontal {
+  .control-label {
+    text-align: center;
+    background-color: #EBEFF2;
+    color: #364851;
+    padding: 6px 12px;
+    border-radius: 4px;
+  }
+}
+
+.vich-image input {
+  color: white;
+}
+
+.dropdown-specimen-result {
+  left: 140px;
+  width: 595px;
+  margin-top: 38px;
+  border-bottom: black 1px solid;
+}
+
+/* Specimen ShowOne */
+
+/* Specimen ShowOne */
+
+#mapid {
+  height: 20vw;
+  max-width: 40vw;
+}
+
+.img-specimen {
+  height: 20vw;
+  max-width: 32vw;
+}
+
+img.img-specimen.img-responsive {
+  display: block;
+  max-width: 100%;
+  max-height: 384px;
+  margin: auto;
+}
+
+.list-info p {
+  font-size: 1.5em;
+}
+
+/* Edit Specimen */
+.specimen-title {
+  text-align: center;
+}
+
+/****** Specimen End ******/
+/**************************/
+
+/*************************/
+/***** CATEGORY Start*****/
+
+a.managelink {
+  margin-left: auto;
+  margin-right: 0;
+  margin-top: 5px;
+  color: black;
+}
+
+a.managelink:hover {
+  text-decoration: none;
+}
+
+.category-title {
+  text-align: center;
+  color: #364851;
+  background-color: #EBEFF2;
+  text-transform: capitalize;
+}
+
+.panel-heading {
+  padding: 30px 10px;
+}
+
+.badge {
+  padding: 15px 14px 15px 14px;
+  margin-left: 10px;
+  font-size: 14px;
+  right: 10px;
+}
+
+.panel-default > .panel-heading .badge {
+  color: #f5f5f5;
+  background-color: #333333;
+}
+
+.panel-default {
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.title-left {
+  align-content: center;
+}
+
+.title-left:hover {
+  background-color: #EBEFF2;
+}
+
+.category-body {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.title-right {
+  text-align: right;
+}
+
+.table-category {
+  margin: auto;
+  width: 100%;
+  border: 1px solid grey;
+  th, tr, td {
+    min-width: 10px;
+    text-align: center;
+    border: 1px solid;
+    padding: 15px;
+  }
+  li {
+    list-style: none;
+  }
+}
+
+.table-category2 {
+  margin: auto;
+  width: 100%;
+  border: none;
+  th, tr, td {
+    min-width: 10px;
+    text-align: center;
+    border: none;
+    padding: 15px;
+  }
+}
+
+.familyList {
+  padding-bottom: 20px;
+}
+
+.title-paragraph {
+  margin-top: 12px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+}
+
+.title-paragraph:hover {
+  text-decoration: none;
+}
+
+.create-button {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.required {
+  padding-right: 5px;
+}
+
+.button-space {
+  display: flex;
+  justify-content: space-around;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.button-space2 {
+  display: flex;
+  justify-content: space-around;
+  margin-left: 0;
+  margin-top: 20px;
+}
+
+.row-right {
+  text-align: right;
+}
+
+.backindex {
+  margin-bottom: 20px;
+  background-color: #617D8A;
+  border-radius: 4px;
+  color: white;
+  border-color: white;
+}
+
+.backindex:hover {
+  color: #617D8A;
+  background-color: #EBEFF2;
+}
+
+.btncreate {
+  margin-bottom: 20px;
+  background-color: #EBEFF2;
+  border-radius: 4px;
+  color: #617D8A;
+  border-color: white;
+}
+
+.btncreate:hover {
+  color: white;
+  background-color: #617D8A;
+}
+
+.mg-top {
+  margin-top: 15px;
+}
+
+.label-name {
+  padding-left: 15px;
+}
+
+@media (max-width: 992px) {
+  .mg-top {
+    margin-top: 0;
+  }
+  .row-right {
+    text-align: center;
+  }
+  .btn-responsive {
+    text-align: center;
+    margin-top: 15px;
+  }
+}
+
+.label-species {
+  padding-left: 15px;
+}
+
+.genus-type {
+  font-style: italic;
+  text-transform: capitalize;
+}
+
+.species, .genus2 {
+  font-style: italic;
+  &::first-letter {
+    text-transform: capitalize;
+  }
+}
+
+.italic, .species2 {
+  font-style: italic;
+}
+
+/***** CATEGORY END*****/
+/*************************/
+
+/*************************/
+/*****LOGIN PAGE START****/
+
+.login-frame {
+  background-color: #EBEFF2;
+  margin-top: 10vh;
+  padding: 5vh;
+  border-radius: 4px;
+}
+
+.login-img {
+  text-align: center;
+  img {
+    width: 5vw;
+    min-width: 50px;
+  }
+}
+
+  .login-title {
+    font-size: 4em;
+    text-transform: capitalize;
+    text-align: center;
+    margin-bottom: 5vh ;
+  }
+
+  .login-input {
+    text-align: center;
+    font-size: 1.5em;
+    input {
+      width: 100%;
+    }
+  }
+
+  .label-admin {
+    text-align: left;
+    font-size: 1.5em;
+    margin-bottom: 15px;
+  }
+
+.login-checkbox {
+  text-align: center;
+  font-size: 1.5em;
+}
+
+  .login-submit {
+    font-family: Roboto, SansSerif;
+    color: white;
+    font-size: 1.2em;
+    background-color: #617D8A;
+    border-radius: 4px;
+    border-color: white;
+  }
+
+  .login-submit:hover {
+    background-color: #EBEFF2;
+    color: #617D8A;
+    border-color: #617D8A;
+  }
+
+.backadmin {
+  margin-top: 20px;
+  background-color: #617D8A;
+  border-radius: 4px;
+  color: white;
+  border-color: white;
+}
+
+.backadmin:hover {
+  color: #617D8A;
+  background-color: #EBEFF2;
+}
+
+a.backadmin {
+  color: white;
+}
+a.backadmin:hover {
+  color: #617D8A;
+}
+
+.admin-input {
+  background-color: #617D8A;
+  border-radius: 4px;
+  color: white;
+  border-color: white;
+  width: 100%;
+}
+
+.admin-input:hover {
+  color: #617D8A;
+  background-color: #EBEFF2;
+}
+
+a.admin-input {
+  color: white;
+}
+a.admin-input:hover {
+  color: #617D8A;
+}
+
+
+  /*****LOGIN PAGE END*******/
+  /*************************/
+
+  /*** UNKNOW ***/
+  .input-group-btn .btn-group {
+    display: flex
+  }
+
+  .btn-group .btn {
+    border-radius: 0;
+    margin-left: -1px;
+  }
+
+  .btn-group .btn:last-child {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+  }
+
+  .btn-group .form-horizontal .btn[type="submit"] {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+  }
+
+  .form-horizontal .form-group {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .form-group .form-control:last-child {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .dropdown.dropdown-lg {
+      position: static;
+    }
+    .dropdown.dropdown-lg .dropdown-menu {
+      min-width: 500px;
+    }
+  }
+
+  /***FOOTER***/
+
+  .footer-bs {
+    background-color: #37474F;
+    padding-top: 20px;
+    color: #e6e6e6;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top:100%;
+    margin-top: 20px;
+    a {
+      color: #e6e6e6;
+    }
+  }
+
+  html {
+    position: relative;
+    min-height: 100%;
+  }

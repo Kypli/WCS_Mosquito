@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="jumbotron category-title">
+            <h1>edit specimen</h1>
+        </div>
+        {% block flashMessage %}
+            {{ parent() }}
+        {% endblock %}
+        <div class="row">
+            <div class="col-sm-offset-2 col-sm-8">
+                <div class=" label-form">
+                    {{ form_start(edit_form) }}
+                    {{ form_widget(edit_form) }}
+                    <div class="row">
+                        {% if app.session.get('specie') != null %}
+                            <a href="{{ path('specimen_index') }}">
+                                <button type="button" class="btn pull-left backindex">
+                                    <span class="glyphicon glyphicon-arrow-left"></span>
+                                    Back to the list
+                                </button>
+                            </a>
+                        {% else %}
+                            <a href="{{ path('asearch') }}">
+                                <button type="button" class="btn pull-left backindex">
+                                    <span class="glyphicon glyphicon-arrow-left"></span>
+                                    Back to Advanced Search
+                                </button>
+                            </a>
+                        {% endif %}
+                        <div class="pull-right">
+                            <button type="submit" class="btn pull-right btncreate"><span class="glyphicon glyphicon-ok"></span> Update</button>
+                        </div>
+                    </div>
+                    {{ form_end(edit_form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+    <div class="jumbotron category-title">
+        <h1>specimen creation</h1>
+    </div>
+    <div class="row">
+        <div class="col-sm-offset-2 col-sm-8">
+        {{ form_start(form) }}
+            <div class="label-form">
+
+                <div class="dropdown dropdown-specimen">
+                <ul id="autocomplete-specimen" class="open dropdown-menu dropdown-specimen-result text-center"></ul>
+
+                {{ form_row(form.specie) }}
+                </div>
+                {{ form_row(form.input) }}
+                {{ form_row(form.name) }}
+                {{ form_row(form.gender) }}
+                {{ form_row(form.name) }}
+                {{ form_row(form.date) }}
+                {{ form_row(form.author, {'attr': {'value': user.username|capitalize}})  }}
+                {{ form_row(form.description) }}
+                {{ form_row(form.imageFile) }}
+                {{ form_row(form.gpsLatitude) }}
+                {{ form_row(form.gpsLongitude) }}
+                {{ form_row(form.trueCoordinate) }}
+                <div class="row ">
+                    <a href="{{ path('homepage') }}">
+                        <button type="button" class="btn pull-left backindex">
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                            Back to home
+                        </button>
+                    </a>
+                    <div class="pull-right">
+                        <button type="submit" class="btn pull-right btncreate">
+                            <span class="glyphicon glyphicon-plus"></span>
+                            Create
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
+
+{% block scripts %}
+{{ parent() }}
+    <script src="{{ asset('build/auto-specimen.js') }}"></script>
+{% endblock %}

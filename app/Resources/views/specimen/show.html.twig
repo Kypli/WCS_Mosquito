@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block css %}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
+          integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
+          crossorigin=""/>
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    <div class="container">
+        <div class="jumbotron category-title">
+            <h1>specimen: {{ specimen.name|capitalize }}</h1>
+        </div>
+        <div class="thumbnail thumbnail-color">
+            <div class="row">
+                <div class=" col-sm-6 col-md-6 col-lg-6">
+                    <img class="img-specimen img-responsive" src="/assets/images/specimen/{{ specimen.imageName }}" alt="image specimen">
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                    <div class="img-repsonsive"id="mapid"
+                         data-latitude="{{ specimen.gpsLatitude }}"
+                         data-longitude="{{ specimen.gpsLongitude }}"
+                         data-true="{{ specimen.trueCoordinate }}">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-5 col-md-5 col-lg-offset-1 col-lg-5">
+                    <div  class="list-info">
+                        <p>Name : {{ specimen.name }}</p>
+                        <p>Date : {{ specimen.date|date('Y-m-d')}}</p>
+                        <p>Author : {{ specimen.author }}</p>
+                        <p>Description : {{ specimen.description }}</p>
+                    </div>
+                </div>
+                <div class="col-sm-5 col-md-5 col-lg-offset-1 col-lg-5">
+                    <div  class="list-info">
+                        <p>Familly : {{ specimen.specie.genus.subFamily.family.name }}</p>
+                        <p>Subfamilly : {{ specimen.specie.genus.subFamily.name }}</p>
+                        <p>Genus Species : <span class="species">{{ specimen.specie.genus.name }} {{ specimen.specie.name }}</span></p>
+                        <p>Gender : {{ specimen.gender }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    {% if app.session.get('specie') != null %}
+                        <a class="btn backindex" role="button" href="{{ path('specimen_index') }}">
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                            Back to the list
+                        </a>
+                    {% else %}
+                        <a class="btn backindex" role="button" href="{{ path('asearch') }}">
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                            Back to Advanced Search
+                        </a>
+                    {% endif %}
+                </div>
+                <div class="col-md-8 text-center">
+                    <a class="btn btn-default" role="button" href="{{ path('specimen_edit', { 'id': specimen.id }) }}">
+                        Edit
+                    </a>
+                </div>
+                <div class="col-md-2">
+                    {{ form_start(delete_form) }}
+                    <input type="submit" class="btn btn-danger button pull-right delete" value="Delete">
+                    {{ form_end(delete_form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block scripts %}
+    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
+            integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
+            crossorigin="">
+    </script>
+    <script src="{{ asset('build/api.js') }}"></script>
+    {{ parent() }}
+{% endblock %}

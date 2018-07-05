@@ -1,0 +1,19 @@
+<div class="col-md-3">
+    {{ form_start(form, {'attr':{'id':'form_search'}}) }}
+    <div class="input-group searchBar responsiveSearch">
+        <div class="dropdown dropdown-search">
+            <ul id="autocomplete" class="open dropdown-menu dropdown-result text-center"></ul>
+            {{ form_widget(form.search) }}
+        </div>
+        <span class="input-group-btn">
+            <input class="btn btn-default" type="submit" value="Go!">
+        </span>
+        <span class="input-group-btn">
+            <a class="advanced-btn btn btn-primary glyphicon glyphicon-plus" href="{{ path('asearch') }}"></a>
+        </span>
+    </div>
+    {{ form_end(form) }}
+</div>
+
+
+

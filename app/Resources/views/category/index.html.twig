@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="jumbotron category-title">
+            <h1>categories list</h1>
+        </div>
+        <ul class="list-group">
+            <a class="managelink" href="{{ path('family_index') }}">
+                <li class="list-group-item title-left">
+                    <div class="badge pull-right">{{ families | length }}</div>
+                    <p class="title-paragraph">Families</p>
+                </li>
+            </a>
+            <a class="managelink" href="{{ path('subfamily_index') }}">
+                <li class="list-group-item title-left">
+                    <div class="badge"> {{ subFamilies | length }}</div>
+                    <p class="title-paragraph">SubFamilies</p>
+                </li>
+            </a>
+            <a class="managelink" href="{{ path('genus_index') }}">
+                <li class="list-group-item title-left">
+                    <div class="badge"> {{ genera | length }}</div>
+                    <p class="title-paragraph">Genus</p>
+                </li>
+            </a>
+            <a class="managelink" href="{{ path('specie_index') }}">
+                <li class="list-group-item title-left">
+                    <div class="badge"> {{ species | length }}</div>
+                    <p class="title-paragraph">Species</p>
+                </li>
+            </a>
+        </ul>
+        <a href="{{ path('homepage') }}">
+            <button type="button" class="btn backindex"><span class="glyphicon glyphicon-arrow-left"></span> Back to home</button>
+        </a>
+    </div>
+{% endblock %}

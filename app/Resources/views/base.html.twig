@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}MosquID{% endblock %}</title>
+    {% block css %}
+        <link href="{{ asset("build/global.css") }}" rel="stylesheet">
+        <link href="{{ asset("assets/images/favicon.png") }}" rel="icon" type="ico"/>
+    {% endblock %}
+</head>
+<body class="background-body">
+
+{% block navbar %}
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="navbar navbar-default navbar-fixed-top navbarBackground ">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed burger-btn" data-toggle="collapse" data-target="#navbar"
+                            aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="launchResearch col-md-2 hidden-xs">
+                    <a href="{{ path('homepage') }}">
+                        <img src="{{ asset('assets/images/MosquID.jpg') }}" alt="mosquidlogo" class="img-responsive">
+                    </a>
+                </div>
+                {{ render(controller("AppBundle:Home:form")) }}
+
+                <div id="navbar" class="navbar-collapse pull-right col-md-5">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="{{ path('specimen_new') }}">
+                                <button type="button" class="btn btn-default navbar-btn center-block">
+                                    Add specimen
+                                </button>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('category_index') }}">
+                                <button type="button" class="btn btn-default navbar-btn center-block">
+                                    Categories Management
+                                </button>
+                            </a>
+                        </li>
+                        <li>
+                            <div class="dropdown admin-btn mg-top">
+                                <button class="btn btn-default navbar-btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    Administration
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="admin-drop dropdown-menu" aria-labelledby="dropdownMenu1">
+                                    <li><a href="{{ path('fos_user_change_password') }}">Change password</a></li>
+                                    <li><a href="{{ path('fos_user_registration_register') }}">Create à new account</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="{{ path('fos_user_security_logout') }}">Log out</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="{{ path('asearch') }}">
+                                <button type="button" class="visible-xs btn btn-default navbar-btn center-block">
+                                    Advanced Search
+                                </button>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+{% endblock %}
+{% block body %}
+    {% block flashMessageResearch %}
+        <div class="launchResearch">
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="alert alert-danger alert-{{ label }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+    {% endblock %}
+    {% block flashMessage %}
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-success alert-{{ label }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+    {% endblock %}
+{% endblock %}
+
+{% block footer %}
+    <div class="footer footer-bs">
+        <p class="text-footer text-center designed">
+            Created by
+            <a href="https://wildcodeschool.fr/" target="_blank">
+                <img src="{{ asset('assets/images/wildcodeschool_logo.png') }}" alt="logoWild">
+            </a>
+        </p>
+    </div>
+{% endblock %}
+<script src="{{ asset('build/manifest.js') }}"></script>
+<script src="{{ asset('build/app.js') }}"></script>
+{% block scripts %}
+{% endblock %}
+
+</body>
+</html>

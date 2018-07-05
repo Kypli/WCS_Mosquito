@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="jumbotron category-title">
+            <h1>Species List</h1>
+        </div>
+        {% block flashMessage %}
+            {{ parent() }}
+        {% endblock %}
+        <div class="pull-left btn-responsive">
+            <a href="{{ path('category_index') }}" class="btn backindex">
+                <span class="glyphicon glyphicon-arrow-left"></span>
+                Back to the category list
+            </a>
+        </div>
+
+        <a href="{{ path('specie_new') }}">
+            <button type="button" class="btn pull-right btncreate">
+                <span class="glyphicon glyphicon-plus"></span>
+                Create a new species
+            </button>
+        </a>
+
+        <table class="table-hover tableResult">
+            <thead>
+                <tr>
+                    <th>Genus species</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for specie in species %}
+                    <tr>
+                        <td class="species">{{ specie.genus.name}} {{ specie.name }}</td>
+                        <td class="button-space">
+                            <a href="{{ path('specie_edit', { 'id': specie.id }) }}">
+                                <button type="button" class="btn btn-default pull-right button">Edit</button>
+                            </a>
+                            {% if specie.specimens | length > 0 %}
+                                <button class="btn btn-danger button" disabled="disabled">Delete</button>
+                            {% else %}
+                                {{ form_start(deleteForms[specie.id]) }}
+                                <input type="submit" class="btn btn-danger button delete" value="Delete">
+                                {{ form_end(deleteForms[specie.id]) }}
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

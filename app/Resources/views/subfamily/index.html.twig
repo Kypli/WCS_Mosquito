@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="jumbotron category-title">
+            <h1>subfamilies list</h1>
+        </div>
+        {% block flashMessage %}
+            {{ parent() }}
+        {% endblock %}
+        <div class="pull-left btn-responsive">
+            <a href="{{ path('category_index') }}" class="btn backindex">
+                <span class="glyphicon glyphicon-arrow-left"></span>
+                Back to the category list
+            </a>
+        </div>
+
+        <a href="{{ path('subfamily_new') }}">
+            <button type="button" class="btn pull-right btncreate">
+                <span class="glyphicon glyphicon-plus"></span>
+                Create a new subfamily
+            </button>
+        </a>
+
+        <table class="tableResult">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Family</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for subFamily in subFamilies %}
+                    <tr>
+                        <td>{{ subFamily.name }}</td>
+                        <td>{{ subFamily.family.name}}</td>
+                        <td class="button-space">
+                            <a href="{{ path('subfamily_edit', { 'id': subFamily.id }) }}">
+                                <button type="button" class="btn btn-default pull-right button">Edit</button>
+                            </a>
+                            {% if subFamily.genera | length > 0 %}
+                                <button class="btn btn-danger button" disabled="disabled">Delete</button>
+                            {% else %}
+                                {{ form_start(deleteForms[subFamily.id]) }}
+                                <input type="submit" class="btn btn-danger button delete" value="Delete">
+                                {{ form_end(deleteForms[subFamily.id]) }}
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

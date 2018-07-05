@@ -1,0 +1,41 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+{% block login %}
+<div class="row">
+    <h1 class="login-title">login</h1>
+</div>
+{% endblock %}
+
+{% if error %}
+    <div class="label_error_login alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <p>Wrong username or password</p>
+    </div>
+ {% endif %}
+
+<form action="{{ path("fos_user_security_check") }}" method="post">
+    {% if csrf_token %}
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+    {% endif %}
+        <div class="row login-input">
+            <label for="username">{{ 'Username'|trans }}</label>
+        </div>
+        <div class="row login-input">
+            <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+        </div>
+
+
+        <div class="row login-input">
+            <label for="password">{{ 'Password'|trans }}</label>
+        </div>
+            <div class="row login-input">
+            <input type="password" id="password" name="_password" required="required" />
+        </div>
+
+        <div class="row login-input marginSubmit">
+            <input class="login-submit btn" type="submit" id="_submit" name="_submit" value="{{ 'Submit'|trans }}" />
+        </div>
+</form>

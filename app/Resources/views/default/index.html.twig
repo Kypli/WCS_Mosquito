@@ -1,0 +1,154 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% if results is iterable %}
+        <div class="container">
+            <div class="row">
+                <div class="jumbotron category-title">
+                    <h1>Search "{{ search|capitalize }}"</h1>
+                </div>
+                <div class="col-xs-offset-4 col-xs-4 matchFound text-center">
+                    <h2>Match Found : <span class="matchFoundNumber">{{ results.getTotalItemCount }}</span></h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="table-center table-responsive">
+                    <table class="table-hover tableResult">
+                        <tr>
+                            <th class="fam">Family
+                                <a class="orderBy" href="{{ path('homepage', {
+                                    'search':search,
+                                    'orderBy':'family',
+                                    'orderByDirection':'ASC',
+                                }) }}">
+                                    <span class="glyphicon glyphicon-chevron-up chevron
+                                        {% if app.session.get('orderBy') == 'family'
+                                        and app.session.get('orderByDirection') == 'ASC' %} chevronActive{% endif %}">
+                                    </span>
+                                </a>
+                                <a class="orderBy" href="{{ path('homepage', {
+                                    'search':search,
+                                    'orderBy':'family',
+                                    'orderByDirection':'DESC',
+                                }) }}">
+                                    <span class="glyphicon glyphicon-chevron-down chevron
+                                        {% if app.session.get('orderBy') == 'family'
+                                        and app.session.get('orderByDirection') == 'DESC' %} chevronActive{% endif %}">
+                                    </span>
+                                </a>
+                            </th>
+                            <th class="sub">Sub-Family
+                                <a class="orderBy" href="{{ path('homepage', {
+                                    'search':search,
+                                    'orderBy':'subFamily',
+                                    'orderByDirection':'ASC',
+                                    }) }}">
+                                        <span class="glyphicon glyphicon-chevron-up chevron
+                                            {% if app.session.get('orderBy') == 'subFamily'
+                                            and app.session.get('orderByDirection') == 'ASC' %} chevronActive{% endif %}">
+                                        </span>
+                                </a>
+                                <a class="orderBy" href="{{ path('homepage', {
+                                    'search':search,
+                                    'orderBy':'subFamily',
+                                    'orderByDirection':'DESC',
+                                    }) }}">
+                                        <span class="glyphicon glyphicon-chevron-down chevron
+                                            {% if app.session.get('orderBy') == 'subFamily'
+                                            and app.session.get('orderByDirection') == 'DESC' %} chevronActive{% endif %}">
+                                        </span>
+                                </a>
+                            </th>
+                            <th class="gen">Genus
+                                <a class="orderBy" href="{{ path('homepage', {
+                                    'search':search,
+                                    'orderBy':'genus',
+                                    'orderByDirection':'ASC',
+                                    }) }}">
+                                        <span class="glyphicon glyphicon-chevron-up chevron
+                                            {% if app.session.get('orderBy') == 'genus'
+                                            and app.session.get('orderByDirection') == 'ASC' %} chevronActive{% endif %}">
+                                        </span>
+                                </a>
+                                <a class="orderBy" href="{{ path('homepage', {
+                                    'search':search,
+                                    'orderBy':'genus',
+                                    'orderByDirection':'DESC',
+                                    }) }}">
+                                        <span class="glyphicon glyphicon-chevron-down chevron
+                                            {% if app.session.get('orderBy') == 'genus'
+                                            and app.session.get('orderByDirection') == 'DESC' %} chevronActive{% endif %}">
+                                        </span>
+                                </a>
+                            </th>
+                            <th>species
+                                <a class="orderBy" href="{{ path('homepage', {
+                                    'search':search,
+                                    'orderBy':'specie',
+                                    'orderByDirection':'ASC',
+                                    }) }}">
+                                        <span class="glyphicon glyphicon-chevron-up chevron
+                                            {% if app.session.get('orderBy') == 'specie'
+                                            and app.session.get('orderByDirection') == 'ASC' %} chevronActive{% endif %}">
+                                        </span>
+                                </a>
+                                <a class="orderBy" href="{{ path('homepage', {
+                                    'search':search,
+                                    'orderBy':'specie',
+                                    'orderByDirection':'DESC',
+                                    }) }}">
+                                        <span class="glyphicon glyphicon-chevron-down chevron
+                                            {% if app.session.get('orderBy') == 'specie'
+                                            and app.session.get('orderByDirection') == 'DESC' %} chevronActive{% endif %}">
+                                        </span>
+                                </a>
+                            </th>
+                            <th>Male</th>
+                            <th>Female</th>
+                        </tr>
+                        {% for result in results %}
+                            <tr>
+                                <td>{{ result.species.genus.subfamily.family.name|capitalize }} </td>
+                                <td>{{ result.species.genus.subfamily.name|capitalize }}</td>
+                                <td class="genus2">{{ result.species.genus.name }}</td>
+                                <td class="species2">{{ result.species.name }}</td>
+                                <td><a href="{{ path('specimen_index', {
+                                            'specie':result.species.name,
+                                            'gender':'male',
+                                            'backSearch':search,
+                                        })
+                                    }}">{{ result.male }}</a>
+                                </td>
+                                <td><a href="{{ path('specimen_index', {
+                                            'specie':result.species.name,
+                                            'gender':'female',
+                                            'backSearch':search,
+                                        })
+                                    }}">{{ result.female }}</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div><!-- Row -->
+            <div class="navigation text-center">
+                {{ knp_pagination_render(results) }}
+            </div>
+        </div><!-- Container -->
+    {% else %}
+        <div class="container">
+        <div class="launchResearch">
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="alert alert-danger alert-{{ label }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            <div class="launch"><h1>Launch research needed !</h1></div>
+            <img src="{{ asset('assets/images/mosquIdLogo.png') }}" alt="logoMosquid" class="mosquidLogo  img-responsive">
+        </div>
+        </div>
+    {% endif %}
+
+{% endblock %}

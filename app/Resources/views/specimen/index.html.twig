@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block css %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
+          integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
+          crossorigin=""/>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="jumbotron category-title">
+            <h1>{{ app.session.get('specie')|upper }} - {{ app.session.get('gender')|upper }}</h1>
+        </div>
+        {% block flashMessage %}
+            {{ parent() }}
+        {% endblock %}
+        <div class="row">
+            <div class="col-md-6 -pull-left btn-responsive">
+                <a class="btn backindex" href="{{ path('homepage', {
+                    'backSearch':app.session.get('backSearch'), }) }}">
+                    <span class="glyphicon glyphicon-arrow-left"></span>
+                    Back to search list
+                </a>
+            </div>
+        </div>
+        {% include 'specimen/thumbnails.html.twig' %}
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    {{ parent() }}
+    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
+            integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
+            crossorigin="">
+    </script>
+    <script src="{{ asset('build/apimap.js') }}"></script>
+{% endblock %}

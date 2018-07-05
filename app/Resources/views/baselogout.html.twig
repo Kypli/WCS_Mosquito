@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}MosquID{% endblock %}</title>
+    {% block css %}
+        <link href="{{ asset("build/global.css") }}" rel="stylesheet">
+        <link href="{{ asset("assets/images/favicon.png") }}" rel="icon" type="ico"/>
+    {% endblock %}
+</head>
+{% block navbar %}{% endblock %}
+<body class="background-body">
+{% block body %}{% endblock %}
+{% block footer %}
+    <div class="footer footer-bs">
+        <p class="text-center designed">Created by <a href="https://wildcodeschool.fr/" target="_blank">Wild Code School </a>
+        </p>
+    </div>
+{% endblock %}
+<script src="{{ asset('build/app.js') }}"></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

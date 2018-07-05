@@ -1,0 +1,37 @@
+{#THUMBNAILS#}
+{% for specimen in specimens %}
+    <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="thumbnail thumbnail-color" data-name="{{ specimen.name }}" data-latitude="{{ specimen.gpsLatitude }}" data-longitude="{{ specimen
+        .gpsLongitude }}">
+                <img class="img-thumbnail img-responsive" src="/assets/images/specimen/{{ specimen.imageName }}" alt="image specimen">
+            <div class="caption">
+                <h3><a href="{{ path('specimen_show', { 'id': specimen.id }) }}">{{ specimen.name|capitalize }}</a></h3>
+                <p>{{ specimen.imagename }}</p>
+                <p>{{ specimen.date|date('Y-m-d') }}</p>
+                <p>{{ specimen.author|capitalize }}</p>
+                <div class="buttonspecimenindex">
+                    <a class="btn btn-primary" role="button" href="{{ path('specimen_show', { 'id': specimen.id }) }}">
+                        Show
+                    </a>
+                    <a class="btn btn-default" role="button" href="{{ path('specimen_edit', { 'id': specimen.id }) }}">
+                        Edit
+                    </a>
+                    {{ form_start(deleteForms[specimen.id], {'attr': {'class': 'button-delete'}}) }}
+                    <input type="submit" class="btn btn-danger delete" value="Delete">
+                    {{ form_end(deleteForms[specimen.id]) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+</div>
+
+{# PAGINATION #}
+<div class="navigation text-center">
+    {{ knp_pagination_render(specimens) }}
+</div>
+
+{# MAP MULTI SPECIMEN #}
+<div class="container">
+    <div class="img-responsive" id="mapid2"></div>
+</div>
